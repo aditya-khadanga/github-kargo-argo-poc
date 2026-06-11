@@ -1,0 +1,8 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: myapp
+spec:
+  subscriptions:
+    - image:
+        repo: myrepo/myapp
