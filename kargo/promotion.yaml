@@ -1,0 +1,22 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: PromotionTemplate
+metadata:
+  name: update-env
+spec:
+  steps:
+    - uses: git-clone
+      config:
+        repoURL: https://github.com/aditya-khadanga/github-kargo-argo-poc
+        checkout:
+          branch: master
+
+    - uses: image-update
+      config:
+        path: env-repo/dev/deployment.yaml
+        image: myrepo/myapp
+
+    - uses: git-commit
+      config:
+        message: "Update image via Kargo"
+
+    - uses: git-push
